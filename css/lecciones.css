@@ -1,0 +1,362 @@
+/* =========================
+   DISEÑO NUEVO (SIN TOCAR HTML)
+   Minimal + Paleta Gris (50-950)
+========================= */
+*{ box-sizing: border-box; }
+
+html{
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+:root{
+  /* Paleta gris que ya usas */
+  --color-50:  #F0F3F4;
+  --color-100: #D6DDE0;
+  --color-200: #BCC7CD;
+  --color-300: #A2B1B9;
+  --color-400: #889BA5;
+  --color-500: #6E8591;
+  --color-600: #5A6D77;
+  --color-700: #46555D;
+  --color-800: #323D43;
+  --color-900: #1B2124;
+  --color-950: #0B0D0F;
+
+  --bg: var(--color-950);
+  --surface: rgba(27,33,36,0.72);
+  --surface2: rgba(27,33,36,0.55);
+
+  --text: var(--color-50);
+  --muted: rgba(240,243,244,0.72);
+  --muted2: rgba(240,243,244,0.56);
+
+  --line: rgba(240,243,244,0.10);
+  --line2: rgba(240,243,244,0.16);
+
+  --shadow: 0 18px 48px rgba(0,0,0,0.45);
+  --shadow2: 0 10px 24px rgba(0,0,0,0.35);
+
+  --r12: 12px;
+  --r16: 16px;
+  --r20: 20px;
+  --r26: 26px;
+
+  --ease: cubic-bezier(.2,.8,.2,1);
+}
+
+/* Fondo + textura sutil */
+body{
+  margin: 0;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  font-family: "Open Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: 18px 14px 40px;
+  overflow-x: hidden;
+}
+
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .10;
+  background-image:
+    linear-gradient(90deg, rgba(240,243,244,0.03) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(240,243,244,0.02) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+/* Animación suave (reusa tu marco-hs) */
+@keyframes marco-hs{
+  from{
+    transform: translateY(10px) scale(.98);
+    opacity: 0;
+  }
+  to{
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   BOTÓN / LINK DE LECCIÓN
+========================= */
+.leccion{
+  width: min(720px, 100%);
+  display: grid;
+  justify-items: center;
+}
+
+.leccion a{
+  text-decoration: none;
+  color: rgba(240,243,244,0.92);
+
+  /* quitamos el scale:2 por defecto para evitar que se rompa responsive */
+  transform: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  width: min(720px, 100%);
+  height: auto;
+  min-height: 56px;
+
+  padding: 14px 16px;
+  border-radius: 999px;
+
+  background: rgba(240,243,244,0.05);
+  border: 1px solid var(--line);
+
+  box-shadow: var(--shadow2);
+
+  transition: transform .16s var(--ease), background .16s var(--ease), border-color .16s var(--ease);
+  animation: marco-hs .55s var(--ease) both;
+
+  /* mantiene tu scroll animation si el navegador la soporta */
+  view-timeline-name: --image;
+  view-timeline-axis: block;
+  animation-timeline: --image;
+  animation-range: entry 80% cover 45%;
+  animation-fill-mode: both;
+
+  margin-bottom: 12px;
+}
+
+.leccion a::after{
+  content: "→";
+  font-weight: 1000;
+  color: rgba(240,243,244,0.75);
+  transition: transform .16s var(--ease), opacity .16s var(--ease);
+  opacity: .9;
+}
+
+.leccion a:hover{
+  transform: translateY(-2px);
+  background: rgba(240,243,244,0.07);
+  border-color: rgba(240,243,244,0.20);
+}
+
+.leccion a:hover::after{
+  transform: translateX(2px);
+  opacity: 1;
+}
+
+/* Lección bloqueada */
+.leccion.bloqueada a{
+  background: rgba(240,243,244,0.03);
+  border-color: rgba(240,243,244,0.08);
+  pointer-events: none;
+  opacity: 0.45;
+  border-radius: 999px;
+}
+
+.leccion.bloqueada a::after{
+  content: "🔒";
+  opacity: .8;
+}
+
+/* =========================
+   PREGUNTA / CARD DEL EXAMEN
+========================= */
+.pregunta{
+  width: min(720px, 100%);
+  margin: 16px 0 14px;
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow2);
+
+  padding: 18px 16px;
+  border-radius: var(--r20);
+
+  animation: marco-hs .55s var(--ease) both;
+}
+
+.pregunta h2,
+.pregunta h3,
+.pregunta p{
+  margin: 0;
+}
+
+.pregunta p{
+  margin-top: 10px;
+  color: var(--muted);
+  line-height: 1.6;
+  font-weight: 700;
+}
+
+/* =========================
+   OPCIONES (LISTA)
+========================= */
+.opciones{
+  width: min(720px, 100%);
+
+  list-style: none;
+  padding: 12px;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+
+  background: var(--surface2);
+  border: 1px solid var(--line);
+  border-radius: var(--r20);
+  box-shadow: var(--shadow2);
+
+  gap: 10px;
+  animation: marco-hs .55s var(--ease) both;
+}
+
+/* Cada opción */
+.opciones li{
+  position: relative;
+  list-style: none;
+
+  margin: 0;
+  padding: 12px 12px 12px 44px;
+
+  cursor: pointer;
+
+  border-radius: var(--r16);
+  border: 1px solid rgba(240,243,244,0.10);
+  background: rgba(11,13,15,0.20);
+
+  color: rgba(240,243,244,0.90);
+  font-weight: 800;
+
+  transition: transform .14s var(--ease), background .14s var(--ease), border-color .14s var(--ease);
+}
+
+/* Input oculto */
+.opciones li input[type="radio"]{
+  visibility: hidden;
+  position: absolute;
+}
+
+/* Círculo custom */
+.opciones li::before{
+  content:"";
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+
+  border: 2px solid rgba(240,243,244,0.55);
+  background: transparent;
+
+  transition: background .14s var(--ease), border-color .14s var(--ease), box-shadow .14s var(--ease);
+}
+
+/* Hover */
+.opciones li:hover{
+  transform: translateY(-1px);
+  background: rgba(240,243,244,0.05);
+  border-color: rgba(240,243,244,0.18);
+}
+
+/* Seleccionada */
+.opciones li.selected{
+  background: rgba(240,243,244,0.08);
+  border-color: rgba(240,243,244,0.22);
+  transform: translateY(-1px);
+}
+
+.opciones li.selected::before{
+  background: rgba(240,243,244,0.85);
+  border-color: rgba(240,243,244,0.85);
+  box-shadow: 0 0 0 6px rgba(240,243,244,0.08);
+}
+
+/* =========================
+   BOTÓN COMPLETAR
+========================= */
+#completar-examen{
+  margin-top: 16px;
+  margin-bottom: 34px;
+
+  padding: 12px 16px;
+
+  background: rgba(240,243,244,0.06);
+  color: rgba(240,243,244,0.92);
+
+  border: 1px solid rgba(240,243,244,0.16);
+  border-radius: 999px;
+
+  font-size: 16px;
+  font-weight: 1000;
+  cursor: pointer;
+
+  transition: transform .16s var(--ease), background .16s var(--ease), border-color .16s var(--ease);
+  box-shadow: var(--shadow2);
+}
+
+#completar-examen:hover{
+  transform: translateY(-2px);
+  background: rgba(240,243,244,0.08);
+  border-color: rgba(240,243,244,0.24);
+  padding: 12px 18px; /* micro cambio, no exagerado */
+}
+
+/* =========================
+   BANNER DE PUNTAJE
+========================= */
+#puntaje-banner{
+  display: none;
+  width: min(720px, 100%);
+  background: rgba(240,243,244,0.06);
+  color: rgba(240,243,244,0.92);
+
+  border: 1px solid rgba(240,243,244,0.16);
+  padding: 14px 16px;
+  text-align: center;
+
+  border-radius: var(--r16);
+  margin-top: 18px;
+  font-size: 16px;
+  font-weight: 900;
+  box-shadow: var(--shadow2);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 760px){
+  body{ padding: 16px 12px 36px; }
+  .leccion a{ border-radius: var(--r20); }
+}
+
+@media (max-width: 520px){
+  .leccion a{
+    min-height: 54px;
+    padding: 12px 14px;
+  }
+  .opciones li{
+    padding-left: 42px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

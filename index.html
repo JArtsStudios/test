@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Somos una Iglesia Bendecida, Prosperada en Victoria y Agradecida.">
+  <meta property="og:title" content="Ebenezer Zacapa">
+  <meta property="og:description" content="Somos una Iglesia Bendecida, Prosperada en Victoria y Agradecida.">
+  <meta property="og:type" content="website">
+  <title>Ebenezer Zacapa</title>
+  <link rel="icon" href="img/logo-small.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet/dist/leaflet.css"
+/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <img src="img/logo.png" alt="Logo">
+    </div>
+
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Buscar..."> 
+      <div class="search-results" id="search-results"></div>
+    </div>
+
+    <div class="nav-links" id="nav-links">
+      <a href="/Ministerio/">Ministerio</a>
+      <a href="/multimedia/">Multimedia</a>
+      <a href="/escuela/">Escuela</a>
+      <a href="/oraciones/">Oraciones</a>
+      <a href="/eventos/">Eventos</a>
+      <a href="/social/">Social</a>
+    </div>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- =========================================================
+       HEADER PARA PC / TABLET (TU DISEÑO ACTUAL)
+       Lo controlas con CSS para que NO se vea en mobile
+  ========================================================== -->
+  <header id="header-desktop" class="header-desktop">
+    <div class="header-container-main">
+      <div class="cards-header active">
+        <div class="card-header-titule">
+          <h1>Somos <br>Ebenezer <br>Zacapa</h1>
+          <h2>Una Iglesia Bendecida Prosperada en Victoria y Agradecida</h2>
+        </div>
+      </div>
+
+      <div class="cards-header">
+        <div class="card-header-titule">
+          <h1>Somos <br>Ebenezer <br>Zacapa</h1>
+          <h2>Una Iglesia Bendecida Prosperada en Victoria y Agradecida</h2>
+        </div>
+      </div>
+
+      <div class="cards-header">
+        <div class="card-header-titule">
+          <h1>Somos <br>Ebenezer <br>Zacapa</h1>
+          <h2>Una Iglesia Bendecida Prosperada en Victoria y Agradecida</h2>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       HEADER PARA MOBILE (NUEVO)
+       Lo controlas con CSS para que SOLO se vea en mobile
+  ========================================================== -->
+  <header id="header-mobile" class="header-mobile">
+    <div class="mobile-hero">
+      <!-- Fondo (puedes cambiar la imagen en CSS con background-image) -->
+      <div class="mobile-hero__bg" aria-hidden="true"></div>
+
+      <div class="mobile-hero__content">
+        <p class="mobile-hero__tag">Ministerio</p>
+        <h1 class="mobile-hero__title">Somos Ebenezer Zacapa</h1>
+        <p class="mobile-hero__subtitle">Una Iglesia Bendecida, Prosperada en Victoria y Agradecida</p>
+
+        <!-- <div class="mobile-hero__actions">
+          <a class="mobile-hero__btn" href="#contenido">Ver más</a>
+          <a class="mobile-hero__btn mobile-hero__btn--ghost" href="../">Inicio</a>
+        </div> -->
+      </div>
+    </div>
+  </header>
+
+
+    <main>
+     <section>
+      <div class="card">
+        <div class="card-img"></div>
+        <div class="card-info">
+          <h1>Ministerio</h1>
+          <p>
+            Conoce mas de nuestra iglesia Ebenezer Zacapa, bendecidos, prosperados
+            en victoria y agradecidos.
+          </p>
+        </div>
+        <a href="/Ministerio/" class="card-button"> Explorar </a>
+      </div>
+            
+      <div class="card">
+        <div class="card-img"></div>
+        <div class="card-info">
+          <h1>Oraciones</h1>
+          <p>
+            Aquí puedes solicitar una oración por ti o por alguien más.
+            Nuestro ministerio orará por ti.
+
+
+          </p>
+        </div>
+        <a href="/oraciones/" class="card-button"> Explorar </a>
+      </div>
+            
+      <div class="card">
+        <div class="card-img"></div>
+        <div class="card-info">
+          <h1>Multimedia</h1>
+          <p>
+            Aquí puedes seguir nuestras transmisiones en vivo y ver los videos de nuestros servicios.
+          </p>
+        </div>
+        <a href="/multimedia/" class="card-button"> Explorar </a>
+      </div>     
+      
+      <div class="card">
+        <div class="card-img"></div>
+        <div class="card-info">
+          <h1>Eventos</h1>
+          <p>
+            Aquí puedes enterarte antes que nadie de nuestros próximos eventos y Santas Cenas.
+          </p>
+        </div>
+        <a href="/eventos/" class="card-button"> Explorar </a>
+      </div>
+      
+     </section>
+    </main>
+
+
+     <div class="escuela_container_main">
+            <div class="boton_escuela_container">
+        <a href="/escuela/" class="boton_escuela"><i class="bi bi-mortarboard-fill"></i> VISITAR</a>
+      </div>
+            <div class="escuela_titulo_container">
+              <h1>ESCUELA DE DOCTRINA</h1>
+           </div>
+      <div class="ipad_container">
+        <img src="img/ipad.png" alt="">
+      </div>
+      <div class="info-escuela">
+        <p>
+          Aquí puedes formarte y crecer en la Palabra de Dios a través <br>
+          de nuestra Escuela de Doctrina, profundizando en los fundamentos <br>
+          de la fe y fortaleciendo tu vida espiritual.
+        </p>
+      </div>
+
+
+
+    </div>
+
+
+
+
+        <div class="mapa_container">
+      <div id="mapa-ubicacion"></div>
+      <div class="boton_mapa_container">
+        <a href="https://maps.app.goo.gl/wv1q4Wi3AnvipF7s5" class="boton_mapa"><i class="bi bi-compass-fill"></i> Como Llegar</a>
+      </div>
+    </div>
+
+
+    <!-- CONTENEDOR DEL MAPA -->
+
+
+<!-- LEAFLET -->
+
+
+<script>
+  const lat = 14.9821369;
+  const lng = -89.5368213;
+
+  const map = L.map('mapa-ubicacion', {
+    zoomControl: true,
+    scrollWheelZoom: false,   // rueda del mouse
+    doubleClickZoom: false,   // doble click
+    touchZoom: false,         // pinch en móvil
+    boxZoom: false,           // selección con shift
+    keyboard: false,          // + y -
+    dragging: true            // PERMITE mover el mapa
+  }).setView([lat, lng], 16);
+
+  L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+    { attribution: '' }
+  ).addTo(map);
+
+  L.marker([lat, lng])
+    .addTo(map)
+    .bindPopup('Ebenezer Zacapa');
+</script>
+
+
+
+
+
+
+    <div class="schedule-container">
+        <h1 class="horarios-h1">NUESTROS SERVICIOS</h1>
+        <p class="local-info">El siguiente horario esta ajustado segun su horario local</p>
+        
+        <div class="schedule-grid">
+            
+            <div class="day-column">
+                <div class="day-header">LUNES</div>
+                <div class="service-list">
+                    <div class="service-item">
+                        <span class="service-name">Servicio de Oración</span>
+                        <span class="local-time" data-time-utc="00:30:00Z" data-day="lunes">Cargando...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <div class="day-header">MARTES</div>
+                <div class="service-list">
+                    <div class="service-item">
+                        <span class="service-name">Servicio de Doctrina</span>
+                        <span class="local-time" data-time-utc="01:00:00Z" data-day="martes">Cargando...</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <div class="day-header">MIÉRCOLES</div>
+                <div class="service-list">
+                    <div class="service-item">
+                        <span class="service-name">Servicio General</span>
+                        <span class="local-time" data-time-utc="01:30:00Z" data-day="miércoles">Cargando...</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-brand">
+            <img src="img/logo-small.png" alt="Logo Iglesia">
+            <p class="footer-quote">
+                Somos una Iglesia Bendecida, Prosperada en Victoria y Agradecida!
+            </p>
+        </div>
+
+        <div class="footer-socials">
+            <h4>Síguenos</h4>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/zacapa.fuente.poder" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/fuentedepoder_zacapa/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.tiktok.com/@zacapa.fuente.pod?_r=1&_t=ZS-93EfprcsfH0" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                <a href="https://youtube.com/@fuentedepoderzacapaministerios?si=-qYZChBf0HZDx_Y8" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>
+            © 2025 Ebenezer Zacapa. All Rights Reserved. |
+            Developed by
+            <a href="https://jartsstudios.github.io/J-Arts-Studios/" target="_blank">
+                J Arts Studios
+            </a>
+        </p>
+    </div>
+</footer>
+
+
+  <script src="js/navbar.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/inicio.js"></script>
+</body>
+</html>
